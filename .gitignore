@@ -31,4 +31,5 @@ reports/*
 *.iml
 /target/
 *new_custom_messages_*.properties
+/qa-practice/src/main/resources/crypto.key
 /bin/

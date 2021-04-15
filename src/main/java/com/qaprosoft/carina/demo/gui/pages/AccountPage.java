@@ -4,11 +4,11 @@ import org.openqa.selenium.WebDriver;
 
 import com.qaprosoft.carina.core.gui.AbstractPage;
 
-public class AccountPage extends AbstractPage{
+public class AccountPage extends BasePage{
 
 	public AccountPage(WebDriver driver) {
 		super(driver);
-		setPageAbsoluteURL("http://automationpractice.com/index.php?controller=my-account");
+		setPageURL("?controller=my-account");
 	}
 
 }

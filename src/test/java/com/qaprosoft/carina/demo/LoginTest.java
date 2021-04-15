@@ -9,7 +9,7 @@ import com.qaprosoft.carina.demo.gui.pages.AccountPage;
 import com.qaprosoft.carina.demo.gui.pages.BasePage;
 import com.qaprosoft.carina.demo.gui.pages.LoginPage;
 
-public class LoginWebTest extends AbstractTest {
+public class LoginTest extends AbstractTest {
 	@Test
 	@MethodOwner(owner = "Tsekhanovich")
 	public void testLogin() {
