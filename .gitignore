@@ -28,6 +28,7 @@ reports/*
 /.classpath
 /.project
 .idea
+.DS_Store
 *.iml
 /target/
 *new_custom_messages_*.properties
