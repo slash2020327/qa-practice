@@ -7,7 +7,7 @@ public class MyAccountPage extends AbstractPage {
 
     public MyAccountPage(WebDriver driver){
         super(driver);
-        setPageAbsoluteURL("http://automationpractice.com/index.php?controller=my-account");
+        setPageURL("?controller=my-account");
     }
 
 

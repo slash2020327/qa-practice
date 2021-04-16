@@ -12,7 +12,7 @@ public class LoginPage extends AbstractPage {
 
     public LoginPage(WebDriver driver){
         super(driver);
-        setPageAbsoluteURL("http://automationpractice.com/index.php?controller=authentication&back=my-account");
+        setPageURL("?controller=authentication&back=my-account");
     }
 
 

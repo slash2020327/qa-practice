@@ -52,7 +52,7 @@ public class AccountCreationPage extends AbstractPage {
 
     public AccountCreationPage(WebDriver driver){
         super(driver);
-        setPageAbsoluteURL("http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation");
+        setPageURL("?controller=authentication&back=my-account#account-creation");
     }
 
     public MyAccountPage registerAccount(String firstname, String lastname, String password, String address, String city, String postcode, String mobile, String addressAlias){

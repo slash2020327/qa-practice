@@ -6,10 +6,21 @@ import com.qaprosoft.carina.demo.gui.pages.AccountCreationPage;
 import com.qaprosoft.carina.demo.gui.pages.HomePage;
 import com.qaprosoft.carina.demo.gui.pages.LoginPage;
 import com.qaprosoft.carina.demo.gui.pages.MyAccountPage;
+import org.apache.commons.lang.RandomStringUtils;
 import org.junit.Test;
 import org.testng.Assert;
 
-public class WebSampleTest extends AbstractTest {
+public class RegistrationTest extends AbstractTest {
+
+    private final String email = RandomStringUtils.randomAlphanumeric(6) + "@gmail.com";
+    private final String firstname = RandomStringUtils.randomAlphabetic(6);
+    private final String lastname = RandomStringUtils.randomAlphabetic(5);
+    private final String password = RandomStringUtils.randomAlphanumeric(5);
+    private final String address = RandomStringUtils.randomAlphabetic(6);
+    private final String city = RandomStringUtils.randomAlphabetic(6);
+    private final String postcode = RandomStringUtils.randomNumeric(5);
+    private final String phone = RandomStringUtils.randomNumeric(7);
+    private final String addressAlias = RandomStringUtils.randomAlphabetic(6);
 
     @Test
     @MethodOwner(owner = "tminchuk")
@@ -20,24 +31,15 @@ public class WebSampleTest extends AbstractTest {
 
         LoginPage loginPageShop = homePageShop.getHeaderMenu().openLoginPage();
 
-        final String email = "newqa116@gmail.com";
         AccountCreationPage accountCreationPageShop = loginPageShop.getAuthentication().registerNewEmailValid(email);
         Assert.assertTrue(accountCreationPageShop.isPageOpened(), "Account creation page is not opened");
 
-        final String firstname = "Rachel";
-        final String lastname = "Green";
-        final String password = "qwerty123";
-        final String address = "str. Pobediteley, Minsk";
-        final String city = "Minsk";
-        final String postcode = "00000";
-        final String phone = "+375440000000";
-        final String addressAlias = "My address";
 
         MyAccountPage myAccountPageShop = accountCreationPageShop.registerAccount(firstname, lastname, password, address, city, postcode, phone, addressAlias);
         Assert.assertTrue(myAccountPageShop.isPageOpened(), "My account page is not opened");
     }
 
-    
+
 
 
 
