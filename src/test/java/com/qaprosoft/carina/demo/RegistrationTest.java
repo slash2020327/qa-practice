@@ -1,6 +1,7 @@
 package com.qaprosoft.carina.demo;
 
 import com.qaprosoft.carina.core.foundation.AbstractTest;
+import com.qaprosoft.carina.core.foundation.utils.R;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.demo.gui.pages.AccountPage;
 import com.qaprosoft.carina.demo.gui.pages.BasePage;
@@ -22,9 +23,10 @@ public class RegistrationTest extends AbstractTest {
     private final String phone = RandomStringUtils.randomNumeric(7);
     private final String addressAlias = RandomStringUtils.randomAlphabetic(6);
 
+
     @Test
     @MethodOwner(owner = "tminchuk")
-    public void verifyRegistrationAccount(){
+    public void validateRegistrationAccount(){
         BasePage basePage = new BasePage(getDriver());
         basePage.open();
         Assert.assertTrue(basePage.isPageOpened(), "Home page is not opened");
@@ -35,8 +37,20 @@ public class RegistrationTest extends AbstractTest {
         Assert.assertTrue(registrationPage.isPageOpened(), "Registration page is not opened");
 
 
-        AccountPage accountPage = registrationPage.registerAccount(firstname, lastname, password, address, city, postcode, phone, addressAlias);
-        Assert.assertTrue(accountPage.isPageOpened(), "My account page is not opened");
+        registrationPage.typeFirstname(firstname);
+        registrationPage.typeLastname(lastname);
+        registrationPage.typePassword(password);
+        registrationPage.typeAddress(address);
+        registrationPage.typeCity(city);
+        registrationPage.selectCountry(R.TESTDATA.get("test_country"));
+        registrationPage.selectState(R.TESTDATA.get("test_state"));
+        registrationPage.typePostcode(postcode);
+        registrationPage.typePhone(phone);
+        registrationPage.typeAddressAlias(addressAlias);
+
+        AccountPage accountPage = registrationPage.clickRegisterButton();
+        Assert.assertEquals(accountPage.findInfoMessage().getText(), "Welcome to your account. Here you can manage all of your personal information and orders.");
+
     }
 
 
