@@ -23,11 +23,11 @@ public class LoginItem extends AbstractUIObject {
 		super(driver, searchContext);
 	}
 	
-	public void setEmail(String email) {
+	public void typeEmail(String email) {
 		inputEmail.type(email);
 	}
 	
-	public void setPassword(String password) {
+	public void typePassword(String password) {
 		inputPassword.type(password);
 	}
 	
