@@ -2,12 +2,12 @@ package com.qaprosoft.carina.demo.gui.components;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
-import com.qaprosoft.carina.demo.gui.pages.AccountCreationPage;
+import com.qaprosoft.carina.demo.gui.pages.RegistrationPage;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class Authentication extends AbstractUIObject {
+public class RegistrationItem extends AbstractUIObject {
 
 
     @FindBy(xpath = "//input[@id='email_create']")
@@ -18,14 +18,14 @@ public class Authentication extends AbstractUIObject {
 
 
 
-    public Authentication(WebDriver driver, SearchContext searchContext){
+    public RegistrationItem(WebDriver driver, SearchContext searchContext){
         super(driver, searchContext);
     }
 
-    public AccountCreationPage registerNewEmailValid(String email){
+    public RegistrationPage registerNewEmailValid(String email){
         createEmailField.type(email);
         createAccountButton.click();
-        return new AccountCreationPage(driver);
+        return new RegistrationPage(driver);
     }
 
 }

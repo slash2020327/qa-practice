@@ -2,10 +2,10 @@ package com.qaprosoft.carina.demo;
 
 import com.qaprosoft.carina.core.foundation.AbstractTest;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
-import com.qaprosoft.carina.demo.gui.pages.AccountCreationPage;
-import com.qaprosoft.carina.demo.gui.pages.HomePage;
+import com.qaprosoft.carina.demo.gui.pages.AccountPage;
+import com.qaprosoft.carina.demo.gui.pages.BasePage;
+import com.qaprosoft.carina.demo.gui.pages.RegistrationPage;
 import com.qaprosoft.carina.demo.gui.pages.LoginPage;
-import com.qaprosoft.carina.demo.gui.pages.MyAccountPage;
 import org.apache.commons.lang.RandomStringUtils;
 import org.junit.Test;
 import org.testng.Assert;
@@ -25,18 +25,18 @@ public class RegistrationTest extends AbstractTest {
     @Test
     @MethodOwner(owner = "tminchuk")
     public void verifyRegistrationAccount(){
-        HomePage homePageShop = new HomePage(getDriver());
-        homePageShop.open();
-        Assert.assertTrue(homePageShop.isPageOpened(), "Home page is not opened");
+        BasePage basePage = new BasePage(getDriver());
+        basePage.open();
+        Assert.assertTrue(basePage.isPageOpened(), "Home page is not opened");
 
-        LoginPage loginPageShop = homePageShop.getHeaderMenu().openLoginPage();
+        LoginPage loginPage = basePage.getHeader().openLoginPage();
 
-        AccountCreationPage accountCreationPageShop = loginPageShop.getAuthentication().registerNewEmailValid(email);
-        Assert.assertTrue(accountCreationPageShop.isPageOpened(), "Account creation page is not opened");
+        RegistrationPage registrationPage = loginPage.getRegistrationItem().registerNewEmailValid(email);
+        Assert.assertTrue(registrationPage.isPageOpened(), "Registration page is not opened");
 
 
-        MyAccountPage myAccountPageShop = accountCreationPageShop.registerAccount(firstname, lastname, password, address, city, postcode, phone, addressAlias);
-        Assert.assertTrue(myAccountPageShop.isPageOpened(), "My account page is not opened");
+        AccountPage accountPage = registrationPage.registerAccount(firstname, lastname, password, address, city, postcode, phone, addressAlias);
+        Assert.assertTrue(accountPage.isPageOpened(), "My account page is not opened");
     }
 
 

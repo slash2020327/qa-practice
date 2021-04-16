@@ -1,11 +1,10 @@
 package com.qaprosoft.carina.demo.gui.pages;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.qaprosoft.carina.core.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class AccountCreationPage extends AbstractPage {
+public class RegistrationPage extends BasePage {
 
     @FindBy(xpath = "//input[@id='customer_firstname']")
     private ExtendedWebElement firstnameField;
@@ -50,12 +49,12 @@ public class AccountCreationPage extends AbstractPage {
 
 
 
-    public AccountCreationPage(WebDriver driver){
+    public RegistrationPage(WebDriver driver){
         super(driver);
         setPageURL("?controller=authentication&back=my-account#account-creation");
     }
 
-    public MyAccountPage registerAccount(String firstname, String lastname, String password, String address, String city, String postcode, String mobile, String addressAlias){
+    public AccountPage registerAccount(String firstname, String lastname, String password, String address, String city, String postcode, String mobile, String addressAlias){
         firstnameField.type(firstname);
         lastnameField.type(lastname);
         passwordField.type(password);
@@ -67,7 +66,7 @@ public class AccountCreationPage extends AbstractPage {
         phoneField.type(mobile);
         aliasField.type(addressAlias);
         registerButton.click();
-        return new MyAccountPage(driver);
+        return new AccountPage(driver);
     }
 
 
