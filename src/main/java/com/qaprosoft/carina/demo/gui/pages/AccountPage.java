@@ -2,8 +2,6 @@ package com.qaprosoft.carina.demo.gui.pages;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
-
-import com.qaprosoft.carina.core.gui.AbstractPage;
 import org.openqa.selenium.support.FindBy;
 
 public class AccountPage extends BasePage {
@@ -17,6 +15,5 @@ public class AccountPage extends BasePage {
 
     public ExtendedWebElement findInfoMessage() {
         return infoMessage;
-
     }
 }

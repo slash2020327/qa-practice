@@ -9,6 +9,7 @@ import com.qaprosoft.carina.core.gui.AbstractUIObject;
 import com.qaprosoft.carina.demo.gui.pages.AccountPage;
 
 public class LoginItem extends AbstractUIObject {
+
     @FindBy(xpath = "//input[@id='email']")
     private ExtendedWebElement inputEmail;
 
