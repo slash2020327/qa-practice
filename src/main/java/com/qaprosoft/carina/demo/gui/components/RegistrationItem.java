@@ -8,24 +8,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 public class RegistrationItem extends AbstractUIObject {
-
-
     @FindBy(xpath = "//input[@id='email_create']")
     private ExtendedWebElement createEmailField;
 
     @FindBy(xpath = "//*[@class='icon-user left']")
     private ExtendedWebElement createAccountButton;
 
-
-
-    public RegistrationItem(WebDriver driver, SearchContext searchContext){
+    public RegistrationItem(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
-    public RegistrationPage registerNewEmailValid(String email){
+    public RegistrationPage registerNewEmailValid(String email) {
         createEmailField.type(email);
         createAccountButton.click();
         return new RegistrationPage(driver);
     }
-
 }

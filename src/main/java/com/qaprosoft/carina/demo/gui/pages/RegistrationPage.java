@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 public class RegistrationPage extends BasePage {
-
     @FindBy(xpath = "//input[@id='customer_firstname']")
     private ExtendedWebElement firstnameField;
 
@@ -14,12 +13,6 @@ public class RegistrationPage extends BasePage {
 
     @FindBy(xpath = "//input[@id='passwd']")
     private ExtendedWebElement passwordField;
-
-    /*    @FindBy(xpath = "//input[@id='firstname']")
-    private ExtendedWebElement adressFirstnameField;
-
-    @FindBy(xpath = "//input[@id='lastname']")
-    private ExtendedWebElement adressLastnameField;*/
 
     @FindBy(xpath = "//input[@id='address1']")
     private ExtendedWebElement addressField;
@@ -45,81 +38,64 @@ public class RegistrationPage extends BasePage {
     @FindBy(xpath = "//*[text()='Register']")
     private ExtendedWebElement registerButton;
 
-
     public RegistrationPage(WebDriver driver) {
         super(driver);
         setPageURL("?controller=authentication&back=my-account#account-creation");
     }
 
-//    public AccountPage registerAccount(String firstname, String lastname, String password, String address, String city, String postcode, String phone, String addressAlias) {
-//        firstnameField.type(firstname);
-//        lastnameField.type(lastname);
-//        passwordField.type(password);
-//        addressField.type(address);
-//        cityField.type(city);
-//        countryMenu.select("United States");
-//        stateMenu.select("Alabama");
-//        postcodeField.type(postcode);
-//        phoneField.type(phone);
-//        addressAliasField.type(addressAlias);
-//        registerButton.click();
-//        return new AccountPage(driver);
-//    }
-
-    public void typeFirstname(String firstname){
+    public RegistrationPage typeFirstname(String firstname) {
         firstnameField.type(firstname);
+        return new RegistrationPage(driver);
     }
 
-    public void typeLastname(String lastname){
+    public RegistrationPage typeLastname(String lastname) {
         lastnameField.type(lastname);
+        return new RegistrationPage(driver);
     }
 
-    public void typePassword(String password){
+    public RegistrationPage typePassword(String password) {
         passwordField.type(password);
+        return new RegistrationPage(driver);
     }
 
-    public void typeAddress(String address){
+    public RegistrationPage typeAddress(String address) {
         addressField.type(address);
+        return new RegistrationPage(driver);
     }
 
-    public void typeCity(String city){
+    public RegistrationPage typeCity(String city) {
         cityField.type(city);
+        return new RegistrationPage(driver);
     }
 
-    public void selectCountry(String country){
+    public RegistrationPage selectCountry(String country) {
         countryMenu.select(country);
+        return new RegistrationPage(driver);
     }
 
-    public void selectState(String state){
+    public RegistrationPage selectState(String state) {
         stateMenu.select(state);
+        return new RegistrationPage(driver);
     }
 
-    public void typePostcode(String postcode){
+    public RegistrationPage typePostcode(String postcode) {
         postcodeField.type(postcode);
+        return new RegistrationPage(driver);
     }
 
-    public void typePhone(String phone){
+    public RegistrationPage typePhone(String phone) {
         phoneField.type(phone);
+        return new RegistrationPage(driver);
     }
 
-    public void typeAddressAlias(String addressAlias){
+    public RegistrationPage typeAddressAlias(String addressAlias) {
         addressAliasField.type(addressAlias);
+        return new RegistrationPage(driver);
     }
 
-    public AccountPage clickRegisterButton(){
+    public AccountPage clickRegisterButton() {
         registerButton.click();
         return new AccountPage(driver);
     }
-
-
-
-
-
-
-
-
-
-
-
 }
 

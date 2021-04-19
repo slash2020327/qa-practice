@@ -8,18 +8,16 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebEleme
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
 import com.qaprosoft.carina.demo.gui.pages.LoginPage;
 
-public class HeaderItem extends AbstractUIObject{
-	@FindBy(xpath = "//a[@class='login']")
-	private ExtendedWebElement loginButton;
-	
+public class HeaderItem extends AbstractUIObject {
+    @FindBy(xpath = "//a[@class='login']")
+    private ExtendedWebElement loginButton;
 
-	public HeaderItem(WebDriver driver, SearchContext searchContext) {
-		super(driver, searchContext);
-	}
-	
-	public LoginPage openLoginPage() {
-		loginButton.click();
-		return new LoginPage(driver);
-	}
+    public HeaderItem(WebDriver driver, SearchContext searchContext) {
+        super(driver, searchContext);
+    }
 
+    public LoginPage openLoginPage() {
+        loginButton.click();
+        return new LoginPage(driver);
+    }
 }
