@@ -10,8 +10,8 @@ public class ProductPage extends BasePage{
 	@FindBy(xpath="//ul[@id='color_to_pick_list']//li")
 	private List<ExtendedWebElement> colors;
 	
-	@FindBy(xpath="//select[@id='group_1']")
-	private ExtendedWebElement sizeMenu;
+//	@FindBy(xpath="//select[@id='group_1']")
+//	private ExtendedWebElement sizeMenu;
 	
 	@FindBy(xpath="//option")
 	private List<ExtendedWebElement> sizes;
