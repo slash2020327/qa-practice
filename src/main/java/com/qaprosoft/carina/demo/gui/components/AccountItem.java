@@ -7,16 +7,10 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebEleme
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
 
 public class AccountItem extends AbstractUIObject {
-	@FindBy(xpath = "//h1[@class='page-heading']")
-	private ExtendedWebElement accountItem;
+    @FindBy(xpath = "//h1[@class='page-heading']")
+    private ExtendedWebElement accountItem;
 
-
-
-
-	public AccountItem(WebDriver driver) {
-		super(driver);
-	}
-
-
-
+    public AccountItem(WebDriver driver) {
+        super(driver);
+    }
 }

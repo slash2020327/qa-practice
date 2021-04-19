@@ -8,25 +8,30 @@ import com.qaprosoft.carina.demo.gui.pages.BasePage;
 import com.qaprosoft.carina.demo.gui.pages.RegistrationPage;
 import com.qaprosoft.carina.demo.gui.pages.LoginPage;
 import org.apache.commons.lang.RandomStringUtils;
-import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import java.lang.invoke.MethodHandles;
 
 public class RegistrationTest extends AbstractTest {
+    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-    private final String email = RandomStringUtils.randomAlphanumeric(6) + "@gmail.com";
-    private final String firstname = RandomStringUtils.randomAlphabetic(6);
-    private final String lastname = RandomStringUtils.randomAlphabetic(5);
-    private final String password = RandomStringUtils.randomAlphanumeric(5);
-    private final String address = RandomStringUtils.randomAlphabetic(6);
-    private final String city = RandomStringUtils.randomAlphabetic(6);
-    private final String postcode = RandomStringUtils.randomNumeric(5);
-    private final String phone = RandomStringUtils.randomNumeric(7);
-    private final String addressAlias = RandomStringUtils.randomAlphabetic(6);
+    private String email = RandomStringUtils.randomAlphanumeric(6) + "@gmail.com";
+    private String firstname = RandomStringUtils.randomAlphabetic(6);
+    private String lastname = RandomStringUtils.randomAlphabetic(5);
+    private String password = RandomStringUtils.randomAlphanumeric(5);
+    private String address = RandomStringUtils.randomAlphabetic(6);
+    private String city = RandomStringUtils.randomAlphabetic(6);
+    private String postcode = RandomStringUtils.randomNumeric(5);
+    private String phone = RandomStringUtils.randomNumeric(7);
+    private String addressAlias = RandomStringUtils.randomAlphabetic(6);
 
 
     @Test
     @MethodOwner(owner = "tminchuk")
-    public void validateRegistrationAccount(){
+    public void testRegistrationAccount() {
         BasePage basePage = new BasePage(getDriver());
         basePage.open();
         Assert.assertTrue(basePage.isPageOpened(), "Home page is not opened");
@@ -35,7 +40,6 @@ public class RegistrationTest extends AbstractTest {
 
         RegistrationPage registrationPage = loginPage.getRegistrationItem().registerNewEmailValid(email);
         Assert.assertTrue(registrationPage.isPageOpened(), "Registration page is not opened");
-
 
         registrationPage.typeFirstname(firstname);
         registrationPage.typeLastname(lastname);
@@ -49,12 +53,8 @@ public class RegistrationTest extends AbstractTest {
         registrationPage.typeAddressAlias(addressAlias);
 
         AccountPage accountPage = registrationPage.clickRegisterButton();
-        Assert.assertEquals(accountPage.findInfoMessage().getText(), "Welcome to your account. Here you can manage all of your personal information and orders.");
-
+        Assert.assertEquals(accountPage.findInfoMessage().getText(), "Welcome to your account." +
+                " Here you can manage all of your personal information and orders.");
+        LOGGER.info("Registration successful!");
     }
-
-
-
-
-
 }
