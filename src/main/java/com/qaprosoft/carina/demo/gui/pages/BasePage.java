@@ -10,21 +10,17 @@ import org.slf4j.LoggerFactory;
 
 import java.lang.invoke.MethodHandles;
 
-public class BasePage extends AbstractPage{
+public class BasePage extends AbstractPage {
+    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    @FindBy(xpath = "//header")
+    private HeaderItem header;
 
+    public BasePage(WebDriver driver) {
+        super(driver);
+    }
 
-	@FindBy(xpath = "//header")
-	private HeaderItem header;
-
-	public BasePage(WebDriver driver) {
-		super(driver);
-		
-	}
-	
-	public HeaderItem getHeader() {
+    public HeaderItem getHeader() {
         return header;
     }
-	
 }
