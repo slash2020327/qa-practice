@@ -26,11 +26,11 @@ public class ProductTest extends AbstractTest {
 		Assert.assertTrue(basePage.isPageOpened(), "Base page is not opened!");
 		
 		List<ProductItem> products = basePage.getProducts();
-		Assert.assertFalse(CollectionUtils.isEmpty(products), "No products found!");
 		
-		int rand = (int)(Math.random() * 7);
+		int rand = (int)(Math.random() * basePage.getProducts().size());
 		ProductPage productPage = products.get(rand).openProductPage();
 		Assert.assertTrue(productPage.isPageOpened(), "Product page is not opened!");
+		
 		productPage.selectRandomColor();
 		productPage.selectRandomSize();
 		productPage.addProduct();

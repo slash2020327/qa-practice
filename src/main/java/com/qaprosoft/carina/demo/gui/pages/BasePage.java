@@ -1,16 +1,13 @@
 package com.qaprosoft.carina.demo.gui.pages;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import com.qaprosoft.carina.core.gui.AbstractPage;
 import com.qaprosoft.carina.demo.gui.components.HeaderItem;
 import com.qaprosoft.carina.demo.gui.components.ProductItem;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.lang.invoke.MethodHandles;
+import org.testng.Assert;
 import java.util.List;
 
 public class BasePage extends AbstractPage {
@@ -29,6 +26,7 @@ public class BasePage extends AbstractPage {
     }
     
     public List<ProductItem> getProducts() {
+		Assert.assertFalse(CollectionUtils.isEmpty(products), "No products found!");
 		return products;
 	}
 }

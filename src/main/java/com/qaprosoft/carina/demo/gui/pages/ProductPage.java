@@ -10,10 +10,10 @@ public class ProductPage extends BasePage{
 	@FindBy(xpath="//ul[@id='color_to_pick_list']//li")
 	private List<ExtendedWebElement> colors;
 	
-//	@FindBy(xpath="//select[@id='group_1']")
-//	private ExtendedWebElement sizeMenu;
+	@FindBy(xpath="//select[contains(@class,'attribute_select')]")
+	private ExtendedWebElement sizeMenu;
 	
-	@FindBy(xpath="//option")
+	@FindBy(xpath="//select[contains(@class, 'attribute_select')]/option")
 	private List<ExtendedWebElement> sizes;
 	
 	@FindBy(xpath="//span[text()='Add to cart']")
@@ -34,7 +34,7 @@ public class ProductPage extends BasePage{
 	
 	public ProductPage selectRandomSize() {
 		int rand = (int)(Math.random() * sizes.size());
-		sizes.get(rand).click();
+		sizeMenu.select(rand);
 		return new ProductPage(driver);
     }
 	
