@@ -18,20 +18,19 @@ import java.lang.invoke.MethodHandles;
 public class RegistrationTest extends AbstractTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-    private String email = RandomStringUtils.randomAlphanumeric(6) + "@gmail.com";
-    private String firstname = RandomStringUtils.randomAlphabetic(6);
-    private String lastname = RandomStringUtils.randomAlphabetic(5);
-    private String password = RandomStringUtils.randomAlphanumeric(5);
-    private String address = RandomStringUtils.randomAlphabetic(6);
-    private String city = RandomStringUtils.randomAlphabetic(6);
-    private String postcode = RandomStringUtils.randomNumeric(5);
-    private String phone = RandomStringUtils.randomNumeric(7);
-    private String addressAlias = RandomStringUtils.randomAlphabetic(6);
-
-
     @Test
     @MethodOwner(owner = "tminchuk")
     public void testRegistrationAccount() {
+        String email = RandomStringUtils.randomAlphanumeric(6) + "@gmail.com";
+        String firstname = RandomStringUtils.randomAlphabetic(6);
+        String lastname = RandomStringUtils.randomAlphabetic(5);
+        String password = RandomStringUtils.randomAlphanumeric(5);
+        String address = RandomStringUtils.randomAlphabetic(6);
+        String city = RandomStringUtils.randomAlphabetic(6);
+        String postcode = RandomStringUtils.randomNumeric(5);
+        String phone = RandomStringUtils.randomNumeric(7);
+        String addressAlias = RandomStringUtils.randomAlphabetic(6);
+
         BasePage basePage = new BasePage(getDriver());
         basePage.open();
         Assert.assertTrue(basePage.isPageOpened(), "Home page is not opened");
@@ -53,8 +52,7 @@ public class RegistrationTest extends AbstractTest {
         registrationPage.typeAddressAlias(addressAlias);
 
         AccountPage accountPage = registrationPage.clickRegisterButton();
-        Assert.assertEquals(accountPage.findInfoMessage().getText(), "Welcome to your account." +
-                " Here you can manage all of your personal information and orders.");
+        Assert.assertEquals(accountPage.findInfoMessage().getText(), R.TESTDATA.get("test_success_login_message"));
         LOGGER.info("Registration successful!");
     }
 }

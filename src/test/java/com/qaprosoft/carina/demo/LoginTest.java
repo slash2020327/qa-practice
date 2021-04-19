@@ -32,8 +32,7 @@ public class LoginTest extends AbstractTest {
 
         AccountPage accountPage = loginPage.getLoginItem().confirmLogin();
         Assert.assertTrue(accountPage.isPageOpened(), "Account page is not opened!");
-        Assert.assertEquals(accountPage.findInfoMessage().getText(), "Welcome to your account. Here you can manage "
-                + "all of your personal information and orders.");
+        Assert.assertEquals(accountPage.findInfoMessage().getText(), R.TESTDATA.get("test_success_login_message"));
         LOGGER.info("Login successful!");
     }
 }
