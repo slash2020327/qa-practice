@@ -4,6 +4,7 @@ import com.qaprosoft.carina.core.foundation.AbstractTest;
 import com.qaprosoft.carina.core.foundation.utils.R;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.demo.gui.components.ProductItem;
+import com.qaprosoft.carina.demo.gui.components.Timeouts;
 import com.qaprosoft.carina.demo.gui.pages.BasePage;
 import com.qaprosoft.carina.demo.gui.pages.SearchResultsPage;
 import org.apache.commons.collections4.CollectionUtils;
@@ -23,18 +24,20 @@ public class SearchTest extends AbstractTest {
     @Test
     @MethodOwner(owner = "tminchuk")
     public void testSearch(){
+        String searchItem = R.TESTDATA.get("test_search_item");
+
         BasePage basePage = new BasePage(getDriver());
         basePage.open();
         Assert.assertTrue(basePage.isPageOpened(), "Home page is not opened");
 
-        SearchResultsPage searchResultsPage = basePage.getHeader().clickSearch(R.TESTDATA.get("test_search_item"));
-        pause(2);
-        List<ProductItem> productItem = searchResultsPage.validateSearching();
-        pause(2);
+        SearchResultsPage searchResultsPage = basePage.getHeader().searchProduct(searchItem);
+        Timeouts.SHORT_TIMEOUT.getDeclaringClass();
+        List<ProductItem> productItem = searchResultsPage.getProductList();
+        Timeouts.SHORT_TIMEOUT.getDeclaringClass();
         Assert.assertFalse(CollectionUtils.isEmpty(productItem), "No items found!");
 
         for(ProductItem item : productItem) {
-            Assert.assertTrue(StringUtils.containsIgnoreCase(item.readTitle(), R.TESTDATA.get("test_search_item")),
+            Assert.assertTrue(StringUtils.containsIgnoreCase(item.getTitle(), searchItem),
                     "Found invalid item!");
         }
     }

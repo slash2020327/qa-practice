@@ -15,7 +15,7 @@ public class ProductItem extends AbstractUIObject {
         super(driver, searchContext);
     }
 
-    public String readTitle(){
+    public String getTitle(){
         return productItem.getElement().getText();
 
     }

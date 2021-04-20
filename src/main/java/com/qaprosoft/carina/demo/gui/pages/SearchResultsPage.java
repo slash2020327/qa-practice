@@ -14,10 +14,10 @@ public class SearchResultsPage extends BasePage{
 
     public SearchResultsPage(WebDriver driver){
         super(driver);
-        setPageURL("?controller=search&orderby=position&orderway=desc&search_query=dress&submit_search=");
+        setPageURL("?controller=search&$ignore");
     }
 
-    public List<ProductItem> validateSearching(){
+    public List<ProductItem> getProductList(){
       return productItem;
     }
 

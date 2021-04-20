@@ -31,7 +31,7 @@ public class HeaderItem extends AbstractUIObject {
         return new LoginPage(driver);
     }
 
-    public SearchResultsPage clickSearch(String item){
+    public SearchResultsPage searchProduct(String item){
         searchField.type(item);
         searchButton.click();
         return new SearchResultsPage(driver);
