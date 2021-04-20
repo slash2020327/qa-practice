@@ -3,16 +3,14 @@ package com.qaprosoft.carina.demo.gui.components;
 import com.qaprosoft.carina.core.foundation.utils.common.CommonUtils;
 
 public enum Timeouts {
-    SHORT_TIMEOUT(pause(2)),
-    LONG_TIMEOUT(pause(15));
+    SHORT_TIMEOUT(5),
+    LONG_TIMEOUT(10);
 
-    String currency;
+    public long duration;
 
-    Timeouts(long pause) {
+    Timeouts(long duration) {
+        this.duration = duration;
     }
-
-    public static long pause(long timeout) {
-        CommonUtils.pause(timeout);
-        return timeout;
+    Timeouts() {
     }
 }
