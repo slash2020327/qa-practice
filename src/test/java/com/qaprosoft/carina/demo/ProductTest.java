@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.qaprosoft.carina.core.foundation.AbstractTest;
 import com.qaprosoft.carina.core.foundation.utils.R;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.demo.gui.components.ProductItem;
@@ -23,7 +22,7 @@ import com.qaprosoft.carina.demo.gui.pages.PaymentPage;
 import com.qaprosoft.carina.demo.gui.pages.ProductPage;
 import com.qaprosoft.carina.demo.gui.pages.ShippingPage;
 
-public class ProductTest extends AbstractTest {
+public class ProductTest extends BaseTest {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 	
 	@Test
@@ -51,9 +50,7 @@ public class ProductTest extends AbstractTest {
 		LoginPage loginPage = orderPage.clickProceedButton();
 		Assert.assertTrue(loginPage.isPageOpened(), "Login page is not opened!");
 		
-		loginPage.getLoginItem().typeEmail(R.TESTDATA.get("test_login_value"));
-        loginPage.getLoginItem().typePassword(R.TESTDATA.get("test_password_value"));
-        AddressPage addressPage = loginPage.getLoginItem().confirmOrderLogin();
+        AddressPage addressPage = login(loginPage).getLoginItem().confirmOrderLogin();
         Assert.assertTrue(addressPage.isPageOpened(), "Address page is not opened!");
         
         ShippingPage shippingPage = addressPage.clickProceedButton();
@@ -68,7 +65,6 @@ public class ProductTest extends AbstractTest {
         ConfirmedOrderPage confirmedOrderPage = orderSummaryPage.clickWireButton();
         Assert.assertTrue(confirmedOrderPage.isPageOpened(), "Order summary page is not opened!");
         Assert.assertEquals(confirmedOrderPage.getInfoMessage().getText(), R.TESTDATA.get("test_success_order_message"));
-        
         
         LOGGER.info("Product has been purchased!");
     }

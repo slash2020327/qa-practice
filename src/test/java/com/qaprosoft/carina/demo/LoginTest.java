@@ -6,16 +6,14 @@ import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.qaprosoft.carina.core.foundation.AbstractTest;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.demo.gui.pages.AccountPage;
-import com.qaprosoft.carina.demo.gui.pages.BasePage;
 import com.qaprosoft.carina.demo.gui.pages.HomePage;
 import com.qaprosoft.carina.demo.gui.pages.LoginPage;
 
 import java.lang.invoke.MethodHandles;
 
-public class LoginTest extends AbstractTest {
+public class LoginTest extends BaseTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     @Test
@@ -27,12 +25,10 @@ public class LoginTest extends AbstractTest {
 
         LoginPage loginPage = homePage.getHeader().openLoginPage();
         Assert.assertTrue(loginPage.isPageOpened(), "Login page is not opened!");
-
-        loginPage.getLoginItem().typeEmail(R.TESTDATA.get("test_login_value"));
-        loginPage.getLoginItem().typePassword(R.TESTDATA.get("test_password_value"));
-
-        AccountPage accountPage = loginPage.getLoginItem().confirmAccountLogin();
+        
+        AccountPage accountPage = login(loginPage).getLoginItem().confirmAccountLogin();// loginPage.getLoginItem().confirmAccountLogin();
         Assert.assertTrue(accountPage.isPageOpened(), "Account page is not opened!");
+        
         Assert.assertEquals(accountPage.findInfoMessage().getText(), R.TESTDATA.get("test_success_login_message"));
         LOGGER.info("Login successful!");
     }

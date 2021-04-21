@@ -5,9 +5,7 @@
     <classes>
       <class name="com.qaprosoft.carina.demo.ProductTest"/>
       <class name="com.qaprosoft.carina.demo.LoginTest">
-      <methods>
-        <exclude name="testLogin"/>
-      </methods>
+      
       </class>
       <class name="com.qaprosoft.carina.demo.RegistrationTest"/>
     </classes>
