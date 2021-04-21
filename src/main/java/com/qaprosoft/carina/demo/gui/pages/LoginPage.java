@@ -14,7 +14,7 @@ public class LoginPage extends BasePage {
 
     public LoginPage(WebDriver driver) {
         super(driver);
-        setPageURL("?controller=authentication&back=my-account");
+        setPageURL("?controller=authentication&$ignore");
     }
 
     public RegistrationItem getRegistrationItem() {

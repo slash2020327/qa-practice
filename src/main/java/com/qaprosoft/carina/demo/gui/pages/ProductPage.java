@@ -6,10 +6,10 @@ import org.openqa.selenium.support.FindBy;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 
-public class ProductPage extends BasePage{
+public class ProductPage extends BasePage {
 	@FindBy(xpath="//ul[@id='color_to_pick_list']//li")
 	private List<ExtendedWebElement> colors;
-	
+
 	@FindBy(xpath="//select[contains(@class,'attribute_select')]")
 	private ExtendedWebElement sizeMenu;
 	
@@ -22,8 +22,12 @@ public class ProductPage extends BasePage{
 	@FindBy(xpath="//i[@class='icon-ok']")
 	private ExtendedWebElement okIcon;
 	
+	@FindBy(xpath="//a[@title='Proceed to checkout']")
+	private ExtendedWebElement proceedButton;
+	
 	public ProductPage(WebDriver driver) {
 		super(driver);
+		setPageURL("?id_product=&$ignore&controller=product");
 	}
 	
 	public ProductPage selectRandomColor() {
@@ -47,4 +51,8 @@ public class ProductPage extends BasePage{
     	return okIcon;
     }
 	
+	public OrderPage clickProceedButton() {
+		proceedButton.click();
+    	return new OrderPage(driver);
+    }
 }

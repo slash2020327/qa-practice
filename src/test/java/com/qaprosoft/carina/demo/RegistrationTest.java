@@ -5,6 +5,7 @@ import com.qaprosoft.carina.core.foundation.utils.R;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.demo.gui.pages.AccountPage;
 import com.qaprosoft.carina.demo.gui.pages.BasePage;
+import com.qaprosoft.carina.demo.gui.pages.HomePage;
 import com.qaprosoft.carina.demo.gui.pages.RegistrationPage;
 import com.qaprosoft.carina.demo.gui.pages.LoginPage;
 import org.apache.commons.lang.RandomStringUtils;
@@ -31,11 +32,11 @@ public class RegistrationTest extends AbstractTest {
         String phone = RandomStringUtils.randomNumeric(7);
         String addressAlias = RandomStringUtils.randomAlphabetic(6);
 
-        BasePage basePage = new BasePage(getDriver());
-        basePage.open();
-        Assert.assertTrue(basePage.isPageOpened(), "Home page is not opened");
+        HomePage homePage = new HomePage(getDriver());
+        homePage.open();
+        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
 
-        LoginPage loginPage = basePage.getHeader().openLoginPage();
+        LoginPage loginPage = homePage.getHeader().openLoginPage();
 
         RegistrationPage registrationPage = loginPage.getRegistrationItem().registerNewEmailValid(email);
         Assert.assertTrue(registrationPage.isPageOpened(), "Registration page is not opened");
