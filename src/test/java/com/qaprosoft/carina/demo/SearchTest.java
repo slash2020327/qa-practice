@@ -31,9 +31,9 @@ public class SearchTest extends AbstractTest {
         Assert.assertTrue(basePage.isPageOpened(), "Home page is not opened");
 
         SearchResultsPage searchResultsPage = basePage.getHeader().searchProduct(searchItem);
-        pause(Timeouts.SHORT_TIMEOUT.duration);
+        pause(Timeouts.SHORT_TIMEOUT.getDuration());
         List<ProductItem> productItem = searchResultsPage.getProductList();
-        pause(Timeouts.SHORT_TIMEOUT.duration);
+        pause(Timeouts.SHORT_TIMEOUT.getDuration());
         Assert.assertFalse(CollectionUtils.isEmpty(productItem), "No items found!");
 
         for(ProductItem item : productItem) {
