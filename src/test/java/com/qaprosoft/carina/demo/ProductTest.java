@@ -9,34 +9,46 @@ import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.qaprosoft.carina.core.foundation.AbstractTest;
+import com.qaprosoft.carina.core.foundation.utils.R;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.demo.gui.components.ProductItem;
-import com.qaprosoft.carina.demo.gui.pages.BasePage;
+import com.qaprosoft.carina.demo.gui.pages.AddressPage;
+import com.qaprosoft.carina.demo.gui.pages.ConfirmedOrderPage;
+import com.qaprosoft.carina.demo.gui.pages.HomePage;
+import com.qaprosoft.carina.demo.gui.pages.LoginPage;
+import com.qaprosoft.carina.demo.gui.pages.OrderPage;
+import com.qaprosoft.carina.demo.gui.pages.OrderSummaryPage;
+import com.qaprosoft.carina.demo.gui.pages.PaymentPage;
 import com.qaprosoft.carina.demo.gui.pages.ProductPage;
+import com.qaprosoft.carina.demo.gui.pages.ShippingPage;
 
-public class ProductTest extends AbstractTest {
+public class ProductTest extends BaseTest {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 	
 	@Test
     @MethodOwner(owner = "Tsekhanovich")
     public void testProduct() throws InterruptedException {
-		BasePage basePage = new BasePage(getDriver());
-		basePage.open();
-		Assert.assertTrue(basePage.isPageOpened(), "Base page is not opened!");
+		List<ProductItem> products = homePage.getProducts();
 		
-		List<ProductItem> products = basePage.getProducts();
-		
-		int rand = (int)(Math.random() * basePage.getProducts().size());
+		int rand = (int)(Math.random() * products.size());
 		ProductPage productPage = products.get(rand).openProductPage();
-		Assert.assertTrue(productPage.isPageOpened(), "Product page is not opened!");
 		
 		productPage.selectRandomColor();
 		productPage.selectRandomSize();
 		productPage.addProduct();
 		Assert.assertTrue(productPage.getOkIcon().isVisible(), "Product has not been added");
 		
-		
-        LOGGER.info("Product has been added!");
+		productPage.clickProceedButton().clickProceedButton();
+        AddressPage addressPage = login(R.TESTDATA.get("test_login_value"), 
+        		R.TESTDATA.get("test_password_value")).getLoginItem().confirmOrderLogin();        
+        ShippingPage shippingPage = addressPage.clickProceedButton();
+        PaymentPage paymentPage = shippingPage.clickProceedButton();
+        OrderSummaryPage orderSummaryPage = paymentPage.clickWireButton();
+        
+        ConfirmedOrderPage confirmedOrderPage = orderSummaryPage.clickWireButton();
+        Assert.assertTrue(confirmedOrderPage.isPageOpened(), "Order summary page is not opened!");
+        Assert.assertEquals(confirmedOrderPage.getInfoMessage().getText(), R.TESTDATA.get("test_success_order_message"));
+        
+        LOGGER.info("Product has been purchased!");
     }
 }

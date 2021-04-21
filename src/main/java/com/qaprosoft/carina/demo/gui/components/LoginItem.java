@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
 import com.qaprosoft.carina.demo.gui.pages.AccountPage;
+import com.qaprosoft.carina.demo.gui.pages.AddressPage;
 
 public class LoginItem extends AbstractUIObject {
 
@@ -31,8 +32,15 @@ public class LoginItem extends AbstractUIObject {
         inputPassword.type(password);
     }
 
-    public AccountPage confirmLogin() {
+    public AccountPage confirmAccountLogin() {
         loginButton.click();
         return new AccountPage(driver);
     }
+    
+    public AddressPage confirmOrderLogin() {
+        loginButton.click();
+        return new AddressPage(driver);
+    }
+    
+    
 }

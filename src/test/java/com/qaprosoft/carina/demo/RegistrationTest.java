@@ -1,10 +1,9 @@
 package com.qaprosoft.carina.demo;
 
-import com.qaprosoft.carina.core.foundation.AbstractTest;
 import com.qaprosoft.carina.core.foundation.utils.R;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.demo.gui.pages.AccountPage;
-import com.qaprosoft.carina.demo.gui.pages.BasePage;
+import com.qaprosoft.carina.demo.gui.pages.HomePage;
 import com.qaprosoft.carina.demo.gui.pages.RegistrationPage;
 import com.qaprosoft.carina.demo.gui.pages.LoginPage;
 import org.apache.commons.lang.RandomStringUtils;
@@ -15,7 +14,7 @@ import org.testng.annotations.Test;
 
 import java.lang.invoke.MethodHandles;
 
-public class RegistrationTest extends AbstractTest {
+public class RegistrationTest extends BaseTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     @Test
@@ -31,11 +30,7 @@ public class RegistrationTest extends AbstractTest {
         String phone = RandomStringUtils.randomNumeric(7);
         String addressAlias = RandomStringUtils.randomAlphabetic(6);
 
-        BasePage basePage = new BasePage(getDriver());
-        basePage.open();
-        Assert.assertTrue(basePage.isPageOpened(), "Home page is not opened");
-
-        LoginPage loginPage = basePage.getHeader().openLoginPage();
+        LoginPage loginPage = homePage.getHeader().openLoginPage();
 
         RegistrationPage registrationPage = loginPage.getRegistrationItem().registerNewEmailValid(email);
         Assert.assertTrue(registrationPage.isPageOpened(), "Registration page is not opened");
@@ -53,6 +48,7 @@ public class RegistrationTest extends AbstractTest {
 
         AccountPage accountPage = registrationPage.clickRegisterButton();
         Assert.assertEquals(accountPage.findInfoMessage().getText(), R.TESTDATA.get("test_success_login_message"));
+        
         LOGGER.info("Registration successful!");
     }
 }
