@@ -4,10 +4,9 @@
   <test thread-count="5" name="Test">
     <classes>
       <class name="com.qaprosoft.carina.demo.ProductTest"/>
-      <class name="com.qaprosoft.carina.demo.LoginTest">
-      
-      </class>
+      <class name="com.qaprosoft.carina.demo.LoginTest"/>
       <class name="com.qaprosoft.carina.demo.RegistrationTest"/>
+      <class name="com.qaprosoft.carina.demo.SearchTest"/>
     </classes>
   </test> 
 </suite> 

@@ -28,39 +28,22 @@ public class ProductTest extends BaseTest {
 	@Test
     @MethodOwner(owner = "Tsekhanovich")
     public void testProduct() throws InterruptedException {
-		HomePage homePage = new HomePage(getDriver());
-		homePage.open();
-		Assert.assertTrue(homePage.isPageOpened(), "Base page is not opened!");
-		
 		List<ProductItem> products = homePage.getProducts();
-		Assert.assertFalse(CollectionUtils.isEmpty(products), "No products found!");
 		
 		int rand = (int)(Math.random() * products.size());
 		ProductPage productPage = products.get(rand).openProductPage();
-		Assert.assertTrue(productPage.isPageOpened(), "Product page is not opened!");
 		
 		productPage.selectRandomColor();
 		productPage.selectRandomSize();
 		productPage.addProduct();
 		Assert.assertTrue(productPage.getOkIcon().isVisible(), "Product has not been added");
 		
-		OrderPage orderPage = productPage.clickProceedButton();
-		Assert.assertTrue(orderPage.isPageOpened(), "Order page is not opened!");
-		
-		LoginPage loginPage = orderPage.clickProceedButton();
-		Assert.assertTrue(loginPage.isPageOpened(), "Login page is not opened!");
-		
-        AddressPage addressPage = login(loginPage).getLoginItem().confirmOrderLogin();
-        Assert.assertTrue(addressPage.isPageOpened(), "Address page is not opened!");
-        
+		productPage.clickProceedButton().clickProceedButton();
+        AddressPage addressPage = login(R.TESTDATA.get("test_login_value"), 
+        		R.TESTDATA.get("test_password_value")).getLoginItem().confirmOrderLogin();        
         ShippingPage shippingPage = addressPage.clickProceedButton();
-        Assert.assertTrue(shippingPage.isPageOpened(), "Shipping page is not opened!");
-        
         PaymentPage paymentPage = shippingPage.clickProceedButton();
-        Assert.assertTrue(paymentPage.isPageOpened(), "Payment page is not opened!");
-        
         OrderSummaryPage orderSummaryPage = paymentPage.clickWireButton();
-        Assert.assertTrue(orderSummaryPage.isPageOpened(), "Order summary page is not opened!");
         
         ConfirmedOrderPage confirmedOrderPage = orderSummaryPage.clickWireButton();
         Assert.assertTrue(confirmedOrderPage.isPageOpened(), "Order summary page is not opened!");

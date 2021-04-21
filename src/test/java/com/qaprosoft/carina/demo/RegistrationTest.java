@@ -30,10 +30,6 @@ public class RegistrationTest extends BaseTest {
         String phone = RandomStringUtils.randomNumeric(7);
         String addressAlias = RandomStringUtils.randomAlphabetic(6);
 
-        HomePage homePage = new HomePage(getDriver());
-        homePage.open();
-        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
-
         LoginPage loginPage = homePage.getHeader().openLoginPage();
 
         RegistrationPage registrationPage = loginPage.getRegistrationItem().registerNewEmailValid(email);
