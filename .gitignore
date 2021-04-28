@@ -28,6 +28,7 @@ reports/*
 /.classpath
 /.project
 .idea
+/src/test/resources/
 
 .DS_Store
 *.iml
