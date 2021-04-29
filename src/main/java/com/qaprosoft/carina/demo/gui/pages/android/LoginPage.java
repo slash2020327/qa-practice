@@ -5,17 +5,17 @@ import org.openqa.selenium.support.FindBy;
 
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.demo.gui.common.LoginPageBase;
-import com.qaprosoft.carina.demo.gui.components.android.LoginItem;
-import com.qaprosoft.carina.demo.gui.components.android.RegistrationItem;
+import com.qaprosoft.carina.demo.gui.components.android.AndroidLoginItem;
+import com.qaprosoft.carina.demo.gui.components.android.AndroidRegistrationItem;
 
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = LoginPageBase.class)
 public class LoginPage extends LoginPageBase {
     @FindBy(xpath = "//*[@id='create-account_form']")
-    private RegistrationItem registrationItem;
+    private AndroidRegistrationItem registrationItem;
 
     @FindBy(xpath = "//form[@id='login_form']")
-    private LoginItem loginItem;
+    private AndroidLoginItem loginItem;
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -23,12 +23,12 @@ public class LoginPage extends LoginPageBase {
     }
 
     @Override
-    public RegistrationItem getRegistrationItem() {
+    public AndroidRegistrationItem getRegistrationItem() {
         return registrationItem;
     }
 
     @Override
-    public LoginItem getLoginItem() {
+    public AndroidLoginItem getLoginItem() {
         return loginItem;
     }
 }

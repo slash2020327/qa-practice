@@ -22,7 +22,5 @@ public class OrderSummaryPage extends OrderSummaryPageBase {
 	public ConfirmedOrderPageBase clickWireButton() {
 		confirmButton.click();
 		return initPage(getDriver(), ConfirmedOrderPageBase.class);
-//		return new ConfirmedOrderPage(driver);
 	}
-
 }

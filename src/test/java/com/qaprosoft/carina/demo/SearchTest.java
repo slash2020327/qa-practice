@@ -3,8 +3,8 @@ package com.qaprosoft.carina.demo;
 import com.qaprosoft.carina.core.foundation.utils.R;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.demo.gui.common.SearchResultsPageBase;
-import com.qaprosoft.carina.demo.gui.components.android.ProductItem;
 import com.qaprosoft.carina.demo.gui.components.android.Timeouts;
+import com.qaprosoft.carina.demo.gui.components.common.ProductItem;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -27,7 +27,7 @@ public class SearchTest extends BaseTest {
 
         SearchResultsPageBase searchResultsPage = homePage.getHeader().searchProduct(searchItem);
         pause(Timeouts.SHORT_TIMEOUT.getDuration());
-        List<ProductItem> productItem = searchResultsPage.getProductList();
+        List<ProductItem> productItem = (List<ProductItem>) searchResultsPage.getProductList();
         pause(Timeouts.SHORT_TIMEOUT.getDuration());
         Assert.assertFalse(CollectionUtils.isEmpty(productItem), "No items found!");
 

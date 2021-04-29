@@ -4,8 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
-import com.qaprosoft.carina.demo.gui.BaseItem;
 import com.qaprosoft.carina.demo.gui.common.SearchResultsPageBase;
+import com.qaprosoft.carina.demo.gui.components.android.AndroidProductItem;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
 public class SearchResultsPage extends SearchResultsPageBase {
 
     @FindBy(xpath = "//div[@class='product-container']")
-    private List<BaseItem> productItem;
+    private List<AndroidProductItem> productItem;
 
 
     public SearchResultsPage(WebDriver driver){
@@ -22,8 +22,7 @@ public class SearchResultsPage extends SearchResultsPageBase {
     }
 
     @Override
-    public List<BaseItem> getProductList(){
+    public List<AndroidProductItem> getProductList(){
       return productItem;
     }
-
 }

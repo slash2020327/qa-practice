@@ -4,10 +4,12 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.demo.gui.common.OrderPageBase;
 import com.qaprosoft.carina.demo.gui.common.ProductPageBase;
 
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = ProductPageBase.class)
 public class ProductPage extends ProductPageBase {
 	@FindBy(xpath="//ul[@id='color_to_pick_list']//li")
 	private List<ExtendedWebElement> colors;
@@ -32,27 +34,32 @@ public class ProductPage extends ProductPageBase {
 		setPageURL("?id_product=&$ignore&controller=product");
 	}
 	
+	@Override
 	public ProductPageBase selectRandomColor() {
 		int rand = (int)(Math.random() * colors.size());
 		colors.get(rand).click();
 		return initPage(getDriver(), ProductPageBase.class);
     }
 	
+	@Override
 	public ProductPageBase selectRandomSize() {
 		int rand = (int)(Math.random() * sizes.size());
 		sizeMenu.select(rand);
 		return initPage(getDriver(), ProductPageBase.class);
     }
 	
+	@Override
 	public ProductPageBase addProduct() {
 		button.click();
 		return initPage(getDriver(), ProductPageBase.class);
     }
 	
+	@Override
 	public ExtendedWebElement getOkIcon() {
     	return okIcon;
     }
 	
+	@Override
 	public OrderPageBase clickProceedButton() {
 		proceedButton.click();
 		return initPage(getDriver(), OrderPageBase.class);

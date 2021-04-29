@@ -22,7 +22,6 @@ public class OrderPage extends OrderPageBase {
 	public LoginPageBase clickProceedButton() {
 		proceedButton.click();
 		return initPage(getDriver(), LoginPageBase.class);
-//		return new LoginPage(driver);
 	}
 
 }

@@ -5,13 +5,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.qaprosoft.carina.demo.gui.BaseItem;
+import com.qaprosoft.carina.demo.gui.components.common.AccountItem;
 
-public class AccountItem extends BaseItem{
+public class AndroidAccountItem extends AccountItem{
 	@FindBy(xpath = "//h1[@class='page-heading']")
     private ExtendedWebElement accountItem;
 	
-	public AccountItem(WebDriver driver, SearchContext searchContext) {
+	public AndroidAccountItem(WebDriver driver, SearchContext searchContext) {
 		super(driver, searchContext);
 	}
 }

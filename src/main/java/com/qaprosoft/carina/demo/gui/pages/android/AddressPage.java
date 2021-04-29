@@ -22,7 +22,6 @@ public class AddressPage extends AddressPageBase {
 	public ShippingPageBase clickProceedButton() {
 		proceedButton.click();
 		return initPage(getDriver(), ShippingPageBase.class);
-//		return new ShippingPage(driver);
 	}
 
 }

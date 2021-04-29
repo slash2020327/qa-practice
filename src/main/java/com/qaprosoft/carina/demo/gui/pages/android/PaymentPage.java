@@ -22,7 +22,6 @@ public class PaymentPage extends PaymentPageBase {
 	public OrderSummaryPageBase clickWireButton() {
 		wireButton.click();
 		return initPage(getDriver(), OrderSummaryPageBase.class);
-//		return new OrderSummaryPage(driver);
 	}
 
 }

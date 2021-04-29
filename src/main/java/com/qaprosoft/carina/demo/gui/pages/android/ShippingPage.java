@@ -20,12 +20,12 @@ public class ShippingPage extends ShippingPageBase {
 		super(driver);
 		setPageURL("?controller=order");
 	}
+	
 	@Override
 	public PaymentPageBase clickProceedButton() {
 		agreeButton.click();
 		proceedButton.click();
 		return initPage(getDriver(), PaymentPageBase.class);
-//		return new PaymentPage(driver);
 	}
 
 }

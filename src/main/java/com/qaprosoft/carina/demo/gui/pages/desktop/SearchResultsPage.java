@@ -3,15 +3,17 @@ package com.qaprosoft.carina.demo.gui.pages.desktop;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-import com.qaprosoft.carina.demo.gui.BaseItem;
+import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.demo.gui.common.SearchResultsPageBase;
+import com.qaprosoft.carina.demo.gui.components.android.AndroidProductItem;
 
 import java.util.List;
 
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = SearchResultsPageBase.class)
 public class SearchResultsPage extends SearchResultsPageBase {
 
     @FindBy(xpath = "//div[@class='product-container']")
-    private List<BaseItem> productItem;
+    private List<AndroidProductItem> productItem;
 
 
     public SearchResultsPage(WebDriver driver){
@@ -19,7 +21,8 @@ public class SearchResultsPage extends SearchResultsPageBase {
         setPageURL("?controller=search&$ignore");
     }
 
-    public List<BaseItem> getProductList(){
+    @Override
+    public List<AndroidProductItem> getProductList(){
       return productItem;
     }
 

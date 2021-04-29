@@ -52,70 +52,60 @@ public class RegistrationPage extends RegistrationPageBase {
     public RegistrationPageBase typeFirstname(String firstname) {
         firstnameField.type(firstname);
         return initPage(getDriver(), RegistrationPageBase.class);
-//        return new RegistrationPage(driver);
     }
 
     @Override
     public RegistrationPageBase typeLastname(String lastname) {
         lastnameField.type(lastname);
         return initPage(getDriver(), RegistrationPageBase.class);
-//        return new RegistrationPage(driver);
     }
 
     @Override
     public RegistrationPageBase typePassword(String password) {
         passwordField.type(password);
         return initPage(getDriver(), RegistrationPageBase.class);
-//        return new RegistrationPage(driver);
     }
 
     @Override
     public RegistrationPageBase typeAddress(String address) {
         addressField.type(address);
         return initPage(getDriver(), RegistrationPageBase.class);
-//        return new RegistrationPage(driver);
     }
 
     @Override
     public RegistrationPageBase typeCity(String city) {
         cityField.type(city);
         return initPage(getDriver(), RegistrationPageBase.class);
-//        return new RegistrationPage(driver);
     }
 
     @Override
     public RegistrationPageBase selectCountry(String country) {
         countryMenu.select(country);
         return initPage(getDriver(), RegistrationPageBase.class);
-//        return new RegistrationPage(driver);
     }
 
     @Override
     public RegistrationPageBase selectState(String state) {
         stateMenu.select(state);
         return initPage(getDriver(), RegistrationPageBase.class);
-//        return new RegistrationPage(driver);
     }
 
     @Override
     public RegistrationPageBase typePostcode(String postcode) {
         postcodeField.type(postcode);
         return initPage(getDriver(), RegistrationPageBase.class);
-//        return new RegistrationPage(driver);
     }
 
     @Override
     public RegistrationPageBase typePhone(String phone) {
         phoneField.type(phone);
         return initPage(getDriver(), RegistrationPageBase.class);
-//        return new RegistrationPage(driver);
     }
 
     @Override
     public RegistrationPageBase typeAddressAlias(String addressAlias) {
         addressAliasField.type(addressAlias);
         return initPage(getDriver(), RegistrationPageBase.class);
-//        return new RegistrationPage(driver);
     }
 
     @Override

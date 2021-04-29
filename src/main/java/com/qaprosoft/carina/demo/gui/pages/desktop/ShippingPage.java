@@ -3,10 +3,13 @@ package com.qaprosoft.carina.demo.gui.pages.desktop;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.demo.gui.common.PaymentPageBase;
+import com.qaprosoft.carina.demo.gui.common.SearchResultsPageBase;
 import com.qaprosoft.carina.demo.gui.common.ShippingPageBase;
 
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = SearchResultsPageBase.class)
 public class ShippingPage extends ShippingPageBase {
 	@FindBy(xpath="//input[@id='cgv']")
 	private ExtendedWebElement agreeButton;
@@ -19,6 +22,7 @@ public class ShippingPage extends ShippingPageBase {
 		setPageURL("?controller=order");
 	}
 	
+	@Override
 	public PaymentPageBase clickProceedButton() {
 		agreeButton.click();
 		proceedButton.click();

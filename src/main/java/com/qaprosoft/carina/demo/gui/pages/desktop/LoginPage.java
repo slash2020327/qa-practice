@@ -3,27 +3,31 @@ package com.qaprosoft.carina.demo.gui.pages.desktop;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-import com.qaprosoft.carina.demo.gui.components.desktop.LoginItem;
-import com.qaprosoft.carina.demo.gui.components.desktop.RegistrationItem;
-import com.qaprosoft.carina.demo.gui.pages.android.HomeBasePage;
+import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
+import com.qaprosoft.carina.demo.gui.common.LoginPageBase;
+import com.qaprosoft.carina.demo.gui.components.desktop.DesktopLoginItem;
+import com.qaprosoft.carina.demo.gui.components.desktop.DesktopRegistrationItem;
 
-public class LoginPage extends HomeBasePage {
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = LoginPageBase.class)
+public class LoginPage extends LoginPageBase {
     @FindBy(xpath = "//*[@id='create-account_form']")
-    private RegistrationItem registrationItem;
+    private DesktopRegistrationItem registrationItem;
 
     @FindBy(xpath = "//form[@id='login_form']")
-    private LoginItem loginItem;
+    private DesktopLoginItem loginItem;
 
     public LoginPage(WebDriver driver) {
         super(driver);
         setPageURL("?controller=authentication&$ignore");
     }
 
-    public RegistrationItem getRegistrationItem() {
+    @Override
+    public DesktopRegistrationItem getRegistrationItem() {
         return registrationItem;
     }
 
-    public LoginItem getLoginItem() {
+    @Override
+    public DesktopLoginItem getLoginItem() {
         return loginItem;
     }
 }

@@ -39,7 +39,6 @@ public class ProductPage extends ProductPageBase {
 		int rand = (int)(Math.random() * colors.size());
 		colors.get(rand).click();
 		return initPage(getDriver(), ProductPageBase.class);
-//		return new ProductPage(driver);
     }
 	
 	@Override
@@ -47,14 +46,12 @@ public class ProductPage extends ProductPageBase {
 		int rand = (int)(Math.random() * sizes.size());
 		sizeMenu.select(rand);
 		return initPage(getDriver(), ProductPageBase.class);
-//		return new ProductPage(driver);
     }
 	
 	@Override
 	public ProductPageBase addProduct() {
 		button.click();
 		return initPage(getDriver(), ProductPageBase.class);
-//		return new ProductPage(driver);
     }
 	
 	@Override
@@ -66,6 +63,5 @@ public class ProductPage extends ProductPageBase {
 	public OrderPageBase clickProceedButton() {
 		proceedButton.click();
 		return initPage(getDriver(), OrderPageBase.class);
-//    	return new OrderPage(driver);
     }
 }

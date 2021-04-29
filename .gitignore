@@ -16,6 +16,7 @@
 .project
 *.log
 *.apk
+*.key
 !src/main/resources/carinademoexample.apk
 *.zip
 !src/main/resources/carinademoexample.zip
@@ -28,7 +29,6 @@ reports/*
 /.classpath
 /.project
 .idea
-/src/test/resources/
 
 .DS_Store
 *.iml

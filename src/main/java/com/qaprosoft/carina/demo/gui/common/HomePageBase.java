@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 
-import com.qaprosoft.carina.demo.gui.BaseItem;
 import com.qaprosoft.carina.demo.gui.BasePage;
 
 public abstract class HomePageBase extends BasePage {
@@ -12,5 +11,5 @@ public abstract class HomePageBase extends BasePage {
 		super(driver);
 	}
     
-    public abstract List<BaseItem> getProducts();
+    public abstract List<?> getProducts();
 }

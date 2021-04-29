@@ -12,7 +12,6 @@ public class BaseTest extends AbstractTest {
 	
 	@BeforeMethod
 	public void openMainPage() {
-		
 		homePage.open();
 		Assert.assertTrue(homePage.isPageOpened(), "Base page is not opened!");
 	}
