@@ -4,11 +4,11 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 
 import com.qaprosoft.carina.core.foundation.AbstractTest;
-import com.qaprosoft.carina.demo.gui.pages.HomePage;
-import com.qaprosoft.carina.demo.gui.pages.LoginPage;
+import com.qaprosoft.carina.demo.gui.common.HomePageBase;
+import com.qaprosoft.carina.demo.gui.common.LoginPageBase;
 
 public class BaseTest extends AbstractTest {
-	HomePage homePage = new HomePage(getDriver());
+	protected HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
 	
 	@BeforeMethod
 	public void openMainPage() {
@@ -16,11 +16,12 @@ public class BaseTest extends AbstractTest {
 		Assert.assertTrue(homePage.isPageOpened(), "Base page is not opened!");
 	}
 	
-	public LoginPage login(String login, String password) {
-		LoginPage loginPage = new LoginPage(getDriver());
+	public LoginPageBase webLogin(String login, String password) {
+		LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
 		loginPage.getLoginItem().typeEmail(login);
         loginPage.getLoginItem().typePassword(password);
         return loginPage;
 	}
+	
 
 }

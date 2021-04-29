@@ -16,6 +16,7 @@
 .project
 *.log
 *.apk
+*.key
 !src/main/resources/carinademoexample.apk
 *.zip
 !src/main/resources/carinademoexample.zip

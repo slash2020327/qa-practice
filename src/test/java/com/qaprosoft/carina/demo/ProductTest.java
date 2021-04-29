@@ -3,7 +3,6 @@ package com.qaprosoft.carina.demo;
 import java.lang.invoke.MethodHandles;
 import java.util.List;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
@@ -11,16 +10,15 @@ import org.testng.annotations.Test;
 
 import com.qaprosoft.carina.core.foundation.utils.R;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
-import com.qaprosoft.carina.demo.gui.components.ProductItem;
-import com.qaprosoft.carina.demo.gui.pages.AddressPage;
-import com.qaprosoft.carina.demo.gui.pages.ConfirmedOrderPage;
-import com.qaprosoft.carina.demo.gui.pages.HomePage;
-import com.qaprosoft.carina.demo.gui.pages.LoginPage;
-import com.qaprosoft.carina.demo.gui.pages.OrderPage;
-import com.qaprosoft.carina.demo.gui.pages.OrderSummaryPage;
-import com.qaprosoft.carina.demo.gui.pages.PaymentPage;
-import com.qaprosoft.carina.demo.gui.pages.ProductPage;
-import com.qaprosoft.carina.demo.gui.pages.ShippingPage;
+import com.qaprosoft.carina.demo.gui.common.AddressPageBase;
+import com.qaprosoft.carina.demo.gui.common.ConfirmedOrderPageBase;
+import com.qaprosoft.carina.demo.gui.common.LoginPageBase;
+import com.qaprosoft.carina.demo.gui.common.OrderSummaryPageBase;
+import com.qaprosoft.carina.demo.gui.common.PaymentPageBase;
+import com.qaprosoft.carina.demo.gui.common.ProductPageBase;
+import com.qaprosoft.carina.demo.gui.common.ShippingPageBase;
+import com.qaprosoft.carina.demo.gui.components.common.ProductItem;
+import com.qaprosoft.carina.demo.gui.pages.desktop.LoginPage;
 
 public class ProductTest extends BaseTest {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
@@ -28,10 +26,9 @@ public class ProductTest extends BaseTest {
 	@Test
     @MethodOwner(owner = "Tsekhanovich")
     public void testProduct() throws InterruptedException {
-		List<ProductItem> products = homePage.getProducts();
-		
+		List<ProductItem> products = (List<ProductItem>) homePage.getProducts();
 		int rand = (int)(Math.random() * products.size());
-		ProductPage productPage = products.get(rand).openProductPage();
+		ProductPageBase productPage = products.get(rand).openProductPage();
 		
 		productPage.selectRandomColor();
 		productPage.selectRandomSize();
@@ -39,13 +36,13 @@ public class ProductTest extends BaseTest {
 		Assert.assertTrue(productPage.getOkIcon().isVisible(), "Product has not been added");
 		
 		productPage.clickProceedButton().clickProceedButton();
-        AddressPage addressPage = login(R.TESTDATA.get("test_login_value"), 
-        		R.TESTDATA.get("test_password_value")).getLoginItem().confirmOrderLogin();        
-        ShippingPage shippingPage = addressPage.clickProceedButton();
-        PaymentPage paymentPage = shippingPage.clickProceedButton();
-        OrderSummaryPage orderSummaryPage = paymentPage.clickWireButton();
+        AddressPageBase addressPage = webLogin(R.TESTDATA.get("test_login_value"), 
+        		R.TESTDATA.get("test_password_value")).getLoginItem().confirmOrderLogin();
+        ShippingPageBase shippingPage = addressPage.clickProceedButton();
+        PaymentPageBase paymentPage = shippingPage.clickProceedButton();
+        OrderSummaryPageBase orderSummaryPage = paymentPage.clickWireButton();
         
-        ConfirmedOrderPage confirmedOrderPage = orderSummaryPage.clickWireButton();
+        ConfirmedOrderPageBase confirmedOrderPage = orderSummaryPage.clickWireButton();
         Assert.assertTrue(confirmedOrderPage.isPageOpened(), "Order summary page is not opened!");
         Assert.assertEquals(confirmedOrderPage.getInfoMessage().getText(), R.TESTDATA.get("test_success_order_message"));
         

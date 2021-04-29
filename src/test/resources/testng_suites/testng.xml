@@ -3,10 +3,10 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="com.qaprosoft.carina.demo.ProductTest"/>
-      <class name="com.qaprosoft.carina.demo.LoginTest"/>
-      <class name="com.qaprosoft.carina.demo.RegistrationTest"/>
-      <class name="com.qaprosoft.carina.demo.SearchTest"/>
+      <class name="com.qaprosoft.carina.demo.web.ProductTest"/>
+      <class name="com.qaprosoft.carina.demo.web.LoginTest"/>
+      <class name="com.qaprosoft.carina.demo.web.RegistrationTest"/>
+      <class name="com.qaprosoft.carina.demo.web.SearchTest"/>
     </classes>
   </test> 
 </suite> 

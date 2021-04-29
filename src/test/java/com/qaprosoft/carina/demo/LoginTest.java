@@ -1,13 +1,14 @@
 package com.qaprosoft.carina.demo;
 
 import com.qaprosoft.carina.core.foundation.utils.R;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
-import com.qaprosoft.carina.demo.gui.pages.AccountPage;
+import com.qaprosoft.carina.demo.gui.common.AccountPageBase;
 
 import java.lang.invoke.MethodHandles;
 
@@ -18,10 +19,8 @@ public class LoginTest extends BaseTest {
     @MethodOwner(owner = "Tsekhanovich")
     public void testLogin() {
         homePage.getHeader().openLoginPage();
-        AccountPage accountPage = login(R.TESTDATA.get("test_login_value"), 
+        AccountPageBase accountPage = webLogin(R.TESTDATA.get("test_login_value"), 
         		R.TESTDATA.get("test_password_value")).getLoginItem().confirmAccountLogin();
-        Assert.assertTrue(accountPage.isPageOpened(), "Account page is not opened!");
-        
         Assert.assertEquals(accountPage.findInfoMessage().getText(), R.TESTDATA.get("test_success_login_message"));
         LOGGER.info("Login successful!");
     }
