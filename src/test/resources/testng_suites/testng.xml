@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite verbose="1" name="Demo Tests - Web Sample" parallel="methods">
+<suite verbose="1" name="Login Suite" parallel="methods">
 
 	<parameter name="suiteOwner" value="storetest"/>
 	<parameter name="zafira_project" value="UNKNOWN"/>
-	<parameter name="jenkinsJobName" value="Web-Test"/>
+	<parameter name="jenkinsJobName" value="Web-Test-Login"/>
 	<parameter name="jenkinsJobType" value="web"/>
 	<parameter name="jenkinsEnvironments" value="DEMO"/>
   
@@ -18,10 +18,7 @@
 	
   <test thread-count="5" name="Test">
     <classes>
-      <class name="com.qaprosoft.carina.demo.web.ProductTest"/>
-      <class name="com.qaprosoft.carina.demo.web.LoginTest"/>
-      <class name="com.qaprosoft.carina.demo.web.RegistrationTest"/>
-      <class name="com.qaprosoft.carina.demo.web.SearchTest"/>
+      <class name="com.qaprosoft.carina.demo.SearchTest"/>
     </classes>
   </test> 
 </suite> 
