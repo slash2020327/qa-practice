@@ -1,6 +1,7 @@
 package com.qaprosoft.carina.demo.api.users;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 import org.testng.annotations.Test;
 
@@ -45,7 +46,7 @@ public class UsersAPITest extends AbstractTest {
 		postUserMethod.expectResponseStatus(HttpResponseStatusType.CREATED_201);
 		String id = JsonPath.read(postUserMethod.callAPI().asString(), "$.id");
 		postUserMethod.validateResponse();
-		System.out.println(id);
+		assertTrue(Integer.parseInt(id)>15);
 	}
 	
 	@Test
@@ -54,7 +55,6 @@ public class UsersAPITest extends AbstractTest {
 		patchUserMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
 		String date = JsonPath.read(patchUserMethod.callAPI().asString(), "$.updatedAt");
 		patchUserMethod.validateResponse();
-		System.out.println(date);
 	}
 	
 	
